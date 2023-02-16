@@ -1,7 +1,7 @@
 import Tr from "./Tr"
 function Table(props){
     let arr=props.x
-    // console.log(props)
+    // console.log("Data=",arr)
     return(
         <div>
         <table border="1">
@@ -13,7 +13,7 @@ function Table(props){
                 </tr>
             </thead>
             <tbody>
-                {arr.map((item,index)=><Tr data={item} key={index} ind={index} del={props.del}/>)}
+                {arr.map((item,index,arr1)=><Tr data={item} key={index} ind={index} del={props.del} arr1={arr1}/>)}
                 {/* <td>tr</td> */}
             </tbody>
            </table>

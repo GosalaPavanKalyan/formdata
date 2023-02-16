@@ -1,12 +1,25 @@
 import Table from "./Table";
 import {useState ,useRef} from "react";
 let Fd=()=>{
-    let [Data,setData]=useState([])
+    let arr=  JSON.parse(localStorage.getItem("list")) || []
     let name=useRef("")
     let branch=useRef("")
 
 
+
+    let [Data,setData]=useState([...arr])
+   
+
+
     let update=()=>{
+        if(name.current.value=="" || branch.current.value=="" ){
+            
+            return alert("Enter valid input")
+             
+        }
+        arr.push({name:name.current.value,branch:branch.current.value})
+        localStorage.setItem("list",JSON.stringify(arr))
+        console.log(arr)
         let obj={name:name.current.value,branch:branch.current.value}
         setData([...Data,obj])
         name.current.value=""
@@ -15,18 +28,17 @@ let Fd=()=>{
     }
     let del=(ind)=>{
         setData(Data.filter((item,index)=>{
-            if(index!=ind) {return {...item}}
+            if(index!=ind) {return ({...item}
+                )}
         }))
+        arr.splice(ind,1)
+        
+        // Data.map((item,i)=>{
+        //     arr.push(item)
+        // })
+        localStorage.setItem("list",JSON.stringify(arr))
     }
-    // let setName=(e)=>{
-    //     setObj({...Obj,Name:e.target.value})
-        
-        
-    // }
-    // let setBranch=(e)=>{
-    //     setObj({...Obj,Branch:e.target.value})
-       
-    // }
+    
     let Submit=(event)=>{
         event.preventDefault()
     }
