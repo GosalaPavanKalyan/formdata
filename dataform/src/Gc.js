@@ -1,3 +1,9 @@
 import { createContext } from "react";
-let Gc=createContext()
+
+function fun(){
+    console.log("fun")
+}
+
+
+let Gc=createContext({})
 export default Gc

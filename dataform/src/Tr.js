@@ -1,7 +1,10 @@
+import { useContext } from "react"
+import Gc from "./Gc"
 let Tr=(props)=>{
     let y=props.data
-    // console.log(props)
+    let dt=useContext(Gc)
     let edit=(e)=>{
+        dt()
         // let e=document.getElementById(props.ind)
         // if  (e.innerHTML=="edit") {
         //     e.innerHTML='save'
@@ -32,7 +35,7 @@ let Tr=(props)=>{
             {/* <input id={props.ind} onChange={edit2} placeholder="text"/> */}
             </td>
             <td>{y.branch}</td>
-            <td><button onClick={edit}><i class="fa-solid fa-pen-to-square"></i></button> <button onClick={dl}>delete</button></td>
+            <td><button onClick={edit} ><i className="fa-solid fa-pen-to-square"></i></button> <button onClick={dl}>delete</button></td>
         </tr>
     )
 }
