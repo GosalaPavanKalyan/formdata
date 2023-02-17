@@ -1,14 +1,25 @@
 let Tr=(props)=>{
     let y=props.data
     // console.log(props)
-    let edit=(e1)=>{
-        let e=document.getElementById(props.ind)
-        if  (e.innerHTML=="edit") {
-            e.innerHTML='save'
-        }
-        else{
-            e.innerHTML="edit"
-        }
+    let edit=(e)=>{
+        // let e=document.getElementById(props.ind)
+        // if  (e.innerHTML=="edit") {
+        //     e.innerHTML='save'
+        // }
+        // else{
+        //     e.innerHTML="edit"
+        // }
+    }
+    let edit2=(e)=>{
+
+
+//          props.setData(x=>{ 
+// for(let i=0;i<x.length;i++){
+//     if()
+// }
+
+//                })
+        console.log(e.target.id,e.target.value)
     }
     let dl=()=>{
         props.del(props.ind)
@@ -16,9 +27,12 @@ let Tr=(props)=>{
     }
     return(
         <tr>
-            <td>{y.name}</td>
+            <td>
+            <p>{y.name}</p>
+            {/* <input id={props.ind} onChange={edit2} placeholder="text"/> */}
+            </td>
             <td>{y.branch}</td>
-            <td><button id={props.ind} onClick={edit}>edit</button> <button onClick={dl}>delete</button></td>
+            <td><button onClick={edit}><i class="fa-solid fa-pen-to-square"></i></button> <button onClick={dl}>delete</button></td>
         </tr>
     )
 }

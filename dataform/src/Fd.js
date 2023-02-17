@@ -1,5 +1,6 @@
 import Table from "./Table";
 import {useState ,useRef} from "react";
+import Gc from './Gc'
 let Fd=()=>{
     let arr=  JSON.parse(localStorage.getItem("list")) || []
     let name=useRef("")
@@ -11,7 +12,7 @@ let Fd=()=>{
    
 
 
-    let update=()=>{
+    let add=()=>{
         if(name.current.value=="" || branch.current.value=="" ){
             
             return alert("Enter valid input")
@@ -26,6 +27,9 @@ let Fd=()=>{
         branch.current.value=""
        
     }
+    let update=()=>{
+
+    }
     let del=(ind)=>{
         setData(Data.filter((item,index)=>{
             if(index!=ind) {return ({...item}
@@ -38,6 +42,7 @@ let Fd=()=>{
         // })
         localStorage.setItem("list",JSON.stringify(arr))
     }
+
     
     let Submit=(event)=>{
         event.preventDefault()
@@ -48,8 +53,8 @@ let Fd=()=>{
 <input type="text"  ref={name}/> Name
 <input type="text" ref={branch}/>Branch 
 
-<button onClick={update}>Add</button>
-<Table  x={Data} del={del}/>
+<button id="add" onClick={add}>Add</button>
+<Table  x={Data} setData={setData} del={del}/>
 </form> 
 
 
